@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: evil-box
+  labels:
+    app: evil-box
+spec:
+  containers:
+  - image: busybox
+    command:
+      - echo
+      - "I am an evil pod"
+    imagePullPolicy: IfNotPresent
+    name: evil-box
+  restartPolicy: Always

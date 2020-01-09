@@ -10,8 +10,8 @@ Here's a small demo app and static files to illustrate why you should not run `k
 (`cf7dcfc0c9c37d3986361acdee1d4e5172350a85e39e6b9db9f76600cc7218d0` is the sha256sum of this binary)
 4. Run server in separate terminal or background `./kubectl-apply-demo`
 (You might need to make it executable if you downloaded it from github in Step 3, `chmod u+x kubectl-apply-demo`)
-5. Run `curl localhost:8080/harmless.yaml`
-6. Run `kubectl apply -f localhost:8080/harmless.yaml --dry-run -o yaml`
+5. Run `curl http://localhost:8080/harmless.yaml`
+6. Run `kubectl apply -f http://localhost:8080/harmless.yaml --dry-run -o yaml`
 7. Spot the difference
 
 ## Kubectl Apply Info
@@ -30,9 +30,9 @@ An example from [k8s docs on "Managing Resources"](https://kubernetes.io/docs/co
 
 Applying random things from the internet into a cluster seems like a good way for bad things to happen. Instead, I suggest the following pattern of "get, inspect, apply"
 
-**Get**: `wget https://k8s.io/examples/application/nginx-app.yaml`
+**Get**: `curl https://k8s.io/examples/application/nginx-app.yaml -o nginx-app.yaml`
 
-**Inspect**: `nginx-app.yaml`
+**Inspect**: `cat nginx-app.yaml`
 
 **Apply**: `kubectl apply -f nginx-app.yaml`
 
